@@ -104,7 +104,7 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link">
+                        <a href="./adminlogin.php" class="nav-link">
                             <i class="fa fa-lock me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Admin Login</span>
                         </a>

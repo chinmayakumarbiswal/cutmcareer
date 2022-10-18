@@ -76,7 +76,7 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link">
+                        <a href="./adminlogin.php" class="nav-link">
                             <i class="fa fa-lock me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Admin Login</span>
                         </a>
@@ -88,7 +88,124 @@
             <!-- Navbar End -->
 
 
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Registration</h6>
+                            <form action="./include/uploader.php" method="post" enctype="multipart/form-data">
 
+
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Title</label>
+                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="title">
+                                        <option value="Mr">Mr .</option>
+                                        <option value="Mrs">Mrs .</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="fname">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="lname">
+                                </div>
+
+                                
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Age</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="age">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">DOB</label>
+                                    <input type="date" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="dob">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="email">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Mobile</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="mobile">
+                                </div>
+
+                                <div class="form-floating">
+                                <label for="exampleInputEmail1" class="form-label">Address</label>
+                                    <textarea class="form-control" placeholder="Address"
+                                        id="floatingTextarea" style="height: 150px;" name="address"></textarea>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Post Applied</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="post">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Qualification</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="qualification">
+                                </div>
+
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Specialization</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="specialization">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Experience</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="experiance">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Skills</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="skill">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">Remarks</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="emailHelp" name="remark">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload Signature</label>
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="sign">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload Profile Photos</label>
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="profile">
+                                </div>
+
+                                <button type="submit" class="btn btn-primary" name="register">Register</button>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
 
 
             
