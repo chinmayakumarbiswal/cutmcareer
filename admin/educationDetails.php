@@ -10,7 +10,18 @@ else {
   header('location:../include/logout.php');
 }
 
+$registrationId=$_GET['registrationId'];
+if($_GET['registrationId'])
+{
+  $registerData=getRegisterDetails($db,$registrationId);
+}
+else {
+  header('location:./index.php');
+}
+
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,15 +38,16 @@ else {
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -47,12 +59,10 @@ else {
 <body>
 
 
-
-
-
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -115,82 +125,90 @@ else {
             <!-- Navbar End -->
 
 
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Details about <?=$registerData['firstName']?> <?=$registerData['lastName']?> .
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-12 col-xl-3">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <img class="img-fluid" src="../sign/<?=$registerData['sign']?>" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-xl-3">
+                        <div class="bg-secondary rounded h-100 p-4">
+                        <img class="img-fluid" src="../profile/<?=$registerData['photo']?>" alt="">
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-12">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Added Details</h6>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Education</th>
+                                            <th scope="col">Institute</th>
+                                            <th scope="col">Board</th>
+                                            <th scope="col">StartDate</th>
+                                            <th scope="col">EndDate</th>
+                                            <th scope="col">Mark</th>
+                                            <th scope="col">CGPA / Percent</th>
+                                            <th scope="col">Certificate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <?php
+                                        $file=getAllFile($db,$registrationId);          
+                                        foreach($file as $fileGet){
+                                    ?>
+
+                                        <tr>
+                                            <td><?=$fileGet['education']?></td>
+                                            <td><?=$fileGet['Institute']?></td>
+                                            <td><?=$fileGet['board']?></td>
+                                            <td><?=$fileGet['startDate']?></td>
+                                            <td><?=$fileGet['endDate']?></td>
+                                            <td><?=$fileGet['mark']?></td>
+                                            <td><?=$fileGet['cgpa']?></td>
+                                            <td>
+                                                <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='../allfiles/<?=$fileGet['file']?>';">
+                                                    <i class="mdi mdi-whatsapp"></i> Open File
+                                                </button>   
+                                            </td>
+                                        </tr>
+
+                                    <?php
+                                        }
+                                    ?>
+                                        
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
 
 
 
             
 
 
-            <!-- Recent Sales Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Details</h6>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Age</th>
-                                    <th scope="col">DOB</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Mobile</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Applied Post</th>
-                                    <th scope="col">Qualification</th>
-                                    <th scope="col">Specialization</th>
-                                    <th scope="col">Experience</th>
-                                    <th scope="col">Skills</th>
-                                    <th scope="col">Remarks</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Details View</th>
-                                </tr>
-                            </thead>
-                            <tbody>
 
-
-
-                                <?php
-                                    $file=getAllFileByAdmin($db);          
-                                    foreach($file as $fileGet){
-                                ?>
-
-                                <tr>
-                                    <td><?=$fileGet['Title']?> <?=$fileGet['firstName']?> <?=$fileGet['lastName']?></td>
-                                    <td><?=$fileGet['age']?></td>
-                                    <td><?=$fileGet['dob']?></td>
-                                    <td><?=$fileGet['email']?></td>
-                                    <td><?=$fileGet['mobile']?></td>
-                                    <td><?=$fileGet['address']?></td>
-                                    <td><?=$fileGet['postApplied']?></td>
-                                    <td><?=$fileGet['Qualification']?></td>
-                                    <td><?=$fileGet['Specialization']?></td>
-                                    <td><?=$fileGet['Experience']?></td>
-                                    <td><?=$fileGet['Skills']?></td>
-                                    <td><?=$fileGet['Remarks']?></td>
-                                    <td><?=$fileGet['Time']?></td>
-                                    <td><img src="../profile/<?=$fileGet['photo']?>" height="50px" width="50px"></td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='./educationDetails.php?registrationId=<?=$fileGet['id']?>';">
-                                            <i class="mdi mdi-whatsapp"></i> Open File
-                                        </button> 
-                                    </td>
-                                </tr>
-                                
-                                
-                                <?php
-                                    }
-                                ?>
-
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- Recent Sales End -->
 
 
 
@@ -199,10 +217,10 @@ else {
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="https://sakhyat.tech/">sakhyat.tech</a>, All Right Reserved. 
+                            &copy; <a href="https://sakhyat.tech/">sakhyat.tech</a>, All Right Reserved.
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
-                             Designed By <a href="https://chinmayakumarbiswal.in/">Chinmaya Kumar Biswal</a>
+                            Designed By <a href="https://chinmayakumarbiswal.in/">Chinmaya Kumar Biswal</a>
                         </div>
                     </div>
                 </div>
@@ -226,6 +244,11 @@ else {
     <script src="../lib/tempusdominus/js/moment.min.js"></script>
     <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+
+
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
 </body>
