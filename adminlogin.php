@@ -81,6 +81,7 @@
                     
                     <a href="./index.php" class="nav-item nav-link"><i class="fa fa-id-card me-2"></i>Register</a>
                     <a href="./adminlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>Admin Login</a>
+                    <a href="./userlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>User Login</a>
                    
                 </div>
 
@@ -107,6 +108,12 @@
                         <a href="./adminlogin.php" class="nav-link">
                             <i class="fa fa-lock me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Admin Login</span>
+                        </a>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="./userlogin.php" class="nav-link">
+                            <i class="fa fa-lock me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">User Login</span>
                         </a>
                     </div>
                     

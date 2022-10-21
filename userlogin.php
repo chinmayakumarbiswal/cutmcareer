@@ -2,25 +2,22 @@
     require('./include/database.php');
     require('./include/function.php');
     if(isset($_POST['LoginInto'])){
-        $name=mysqli_real_escape_string($db,$_POST['name']);
         $email=mysqli_real_escape_string($db,$_POST['email']);
         $password=mysqli_real_escape_string($db,$_POST['password']);
 
-        $profile_image_name=$_FILES['profile']['name'];
-        $profile_image_tmp=$_FILES['profile']['tmp_name'];
+        // echo $email;
+        // echo $password;
 
-        if(move_uploaded_file($profile_image_tmp,"./profile/$profile_image_name")){
-            $query="INSERT INTO user (name,email,password,image) VALUES('$name','$email','$password','$profile_image_name')";
-            $run=mysqli_query($db,$query) or die(mysqli_error($db));
-            if ($run) {
-                echo"<script>alert('Your account created successfully !');</script>";
-            }
-            else {
-                echo"<script>alert('Insertion Error !');</script>";
-            }
+        $query="SELECT * FROM user WHERE email='$email' AND password='$password'";
+        $runQuery=mysqli_query($db,$query);
+        if(mysqli_num_rows($runQuery)){
+            $_SESSION['email']=$email;
+            header('location:./user/index.php');
         }
-
-        
+        else{
+            echo"<script>alert('Incorrect email and password !');</script>";
+        }
+      
       
 
 
@@ -133,7 +130,7 @@
             <div class="container-fluid">
                 <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                     <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <form action="" method="post">
                             <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <a href="index.html" class="">
@@ -141,22 +138,18 @@
                                     </a>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="test" class="form-control" id="floatingInput" name="name">
-                                    <label for="floatingInput">Full Name</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput"  name="email">
+                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
                                     <label for="floatingInput">User Email address</label>
                                 </div>
                                 <div class="form-floating mb-4">
                                     <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
                                     <label for="floatingPassword">Password</label>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label">Upload Profile Photos</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="profile">
+                                
+                                <div class="d-flex align-items-center justify-content-between mb-4">
+                                    <a href="">Forgot Password</a>
                                 </div>
-                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Create Account</button>
+                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Sign In</button>
                             </div>
                         </form>
                     </div>

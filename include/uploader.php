@@ -21,8 +21,7 @@
         $sign_image_name=$_FILES['sign']['name'];
         $sign_image_tmp=$_FILES['sign']['tmp_name'];
 
-        $profile_image_name=$_FILES['profile']['name'];
-        $profile_image_tmp=$_FILES['profile']['tmp_name'];
+        $profile_image_name=$_POST['profile'];
 
 
         
@@ -45,22 +44,19 @@
         // echo $sign_image_name."<br>";
         // echo $sign_image_tmp."<br>";
 
-        // echo $profile_image_name."<br>";
-        // echo $profile_image_tmp."<br>";
         
-        if(move_uploaded_file($profile_image_tmp,"../profile/$profile_image_name")){
             if(move_uploaded_file($sign_image_tmp,"../sign/$sign_image_name")){
                 $query="INSERT INTO registrationlog (Title,firstName,lastName,age,dob,email,mobile,address,postApplied,Qualification,Specialization,Experience,Skills,Remarks,sign,photo) VALUES('$title','$fname','$lname','$age','$dob','$email','$mobile','$Address','$post','$qualification','$specialization','$experiance','$skill','$remark','$sign_image_name','$profile_image_name')";
                 $run=mysqli_query($db,$query) or die(mysqli_error($db));
                 if ($run) {
                     $registrationlog_id=mysqli_insert_id($db);
-                    header('location:../educationDetails.php?registrationId='.$registrationlog_id);
+                    header('location:../user/educationDetails.php?registrationId='.$registrationlog_id);
                 }
                 else {
                     echo"<script>alert('Insertion Error !');</script>";
                 }
             }
-        }
+        
 
 
 

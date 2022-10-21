@@ -1,14 +1,32 @@
 <?php
-require('./include/database.php');
-require('./include/function.php');
+require('../include/database.php');
+require('../include/function.php');
+$email=$_SESSION['email'];
+if($_SESSION['email'])
+{
+    $userData=getUserDetails($db,$email);
+}
+else {
+  header('location:../include/logout.php');
+}
+
 $registrationId=$_GET['registrationId'];
 if($_GET['registrationId'])
 {
   $registerData=getRegisterDetails($db,$registrationId);
+  if ($registerData['email'] == $userData['email']) {
+    
+    
+  }
+  else {
+    header('location:./index.php');
+  }
 }
 else {
   header('location:./index.php');
 }
+
+
 
 if(isset($_POST['addEdu'])){
     $education=mysqli_real_escape_string($db,$_POST['education']);
@@ -39,7 +57,7 @@ if(isset($_POST['addEdu'])){
     // echo $certfile_name."<br>";
     // echo $certfile_tmp."<br>";
 
-        if(move_uploaded_file($certfile_tmp,"./allfiles/$certfile_name")){
+        if(move_uploaded_file($certfile_tmp,"../allfiles/$certfile_name")){
             $query="INSERT INTO educationdetails (registrationlogId,education,Institute,board,startDate,endDate,mark,cgpa,file) VALUES('$registrationId','$education','$institute','$board','$startdate','$enddate','$mark','$cgpa','$certfile_name')";
             $run=mysqli_query($db,$query) or die(mysqli_error($db));
             if ($run) {
@@ -49,7 +67,14 @@ if(isset($_POST['addEdu'])){
                 echo"<script>alert('Insertion Error !');</script>";
             }
         }
+        else {
+            echo"<script>alert('File move Error !');</script>";
+        }
 }
+
+
+
+
 ?>
 
 
@@ -77,14 +102,14 @@ if(isset($_POST['addEdu'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -193,18 +218,25 @@ if(isset($_POST['addEdu'])){
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>CUTM Career</h3>
                 </a>
-
-                <div class="navbar-nav w-100">
-
-                    <a href="./index.php" class="nav-item nav-link"><i class="fa fa-id-card me-2"></i>Register</a>
-                    <a href="./adminlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>Admin Login</a>
-
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="../profile/<?=$userData['image']?>" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0"><?=$userData['name']?></h6>
+                        <span>User</span>
+                    </div>
                 </div>
-
-
+                <div class="navbar-nav w-100">
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    
+                    <a href="./registerme.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Register</a>
+                    
+                </div>
             </nav>
         </div>
         <!-- Sidebar End -->
@@ -214,23 +246,25 @@ if(isset($_POST['addEdu'])){
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
+               
                 <div class="navbar-nav align-items-center ms-auto">
-
+                    
+                    
                     <div class="nav-item dropdown">
-                        <a href="./adminlogin.php" class="nav-link">
-                            <i class="fa fa-lock me-lg-2"></i>
-                            <span class="d-none d-lg-inline-flex">Admin Login</span>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="../profile/<?=$userData['image']?>" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><?=$userData['name']?></span>
                         </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="../include/logout.php" class="dropdown-item">Log Out</a>
+                        </div>
                     </div>
-
-
                 </div>
             </nav>
             <!-- Navbar End -->
@@ -250,13 +284,13 @@ if(isset($_POST['addEdu'])){
 
                     <div class="col-sm-12 col-xl-3">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <img class="img-fluid" src="./sign/<?=$registerData['sign']?>" alt="">
+                            <img class="img-fluid" src="../sign/<?=$registerData['sign']?>" alt="">
                         </div>
                     </div>
 
                     <div class="col-sm-12 col-xl-3">
                         <div class="bg-secondary rounded h-100 p-4">
-                        <img class="img-fluid" src="./profile/<?=$registerData['photo']?>" alt="">
+                        <img class="img-fluid" src="../profile/<?=$registerData['photo']?>" alt="">
                         </div>
                     </div>
 
@@ -295,7 +329,7 @@ if(isset($_POST['addEdu'])){
                                             <td><?=$fileGet['mark']?></td>
                                             <td><?=$fileGet['cgpa']?></td>
                                             <td>
-                                                <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='./allfiles/<?=$fileGet['file']?>';">
+                                                <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='../allfiles/<?=$fileGet['file']?>';">
                                                     <i class="mdi mdi-whatsapp"></i> Open File
                                                 </button>   
                                             </td>
@@ -351,20 +385,20 @@ if(isset($_POST['addEdu'])){
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="../lib/chart/chart.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
 
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>
