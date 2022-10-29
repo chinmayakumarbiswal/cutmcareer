@@ -80,7 +80,7 @@
                 <div class="navbar-nav w-100">
                     
                     <a href="./index.php" class="nav-item nav-link"><i class="fa fa-id-card me-2"></i>Register</a>
-                    <a href="./adminlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>Admin Login</a>
+                    <a href="./adminlogin.php" class="nav-item nav-link active"><i class="fa fa-lock me-2"></i>Admin Login</a>
                     <a href="./userlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>User Login</a>
                    
                 </div>
@@ -105,7 +105,7 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     
                     <div class="nav-item dropdown">
-                        <a href="./adminlogin.php" class="nav-link">
+                        <a href="./adminlogin.php" class="nav-link active">
                             <i class="fa fa-lock me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">Admin Login</span>
                         </a>

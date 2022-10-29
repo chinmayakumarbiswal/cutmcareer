@@ -85,7 +85,7 @@
                 
                 <div class="navbar-nav w-100">
                     
-                    <a href="./index.php" class="nav-item nav-link"><i class="fa fa-id-card me-2"></i>Register</a>
+                    <a href="./index.php" class="nav-item nav-link active"><i class="fa fa-id-card me-2"></i>Register</a>
                     <a href="./adminlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>Admin Login</a>
                     <a href="./userlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>User Login</a>
                    
