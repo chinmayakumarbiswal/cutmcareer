@@ -19,6 +19,9 @@
                 echo"<script>alert('Insertion Error !');</script>";
             }
         }
+        else {
+            echo"<script>alert('Insertion Error minimum size 100 KB !');</script>";
+        }
 
         
       

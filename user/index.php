@@ -145,7 +145,10 @@ else {
                                     <th scope="col">Remarks</th>
                                     <th scope="col">Time</th>
                                     <th scope="col">Image</th>
-                                    <th scope="col">Details View</th>
+                                    <th scope="col">Sign</th>
+                                    <th scope="col">View Resume</th>
+                                    <th scope="col">Add Education</th>
+                                    <th scope="col">Application Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -172,11 +175,21 @@ else {
                                     <td><?=$fileGet['Remarks']?></td>
                                     <td><?=$fileGet['Time']?></td>
                                     <td><img src="../profile/<?=$fileGet['photo']?>" height="50px" width="50px"></td>
+                                    <td><img src="../sign/<?=$fileGet['sign']?>" height="auto" width="50px"></td>
+                                    <td>
+                                        <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='../cv/<?=$fileGet['cv']?>';">
+                                            <i class="mdi mdi-whatsapp"></i> Open Resume
+                                        </button> 
+                                    </td>
                                     <td>
                                         <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='./educationDetails.php?registrationId=<?=$fileGet['id']?>';">
                                             <i class="mdi mdi-whatsapp"></i> Add Education
                                         </button> 
                                     </td>
+
+                                    <td><div class="p-2 mb-2 bg-info text-dark"><?=$fileGet['status']?></div></td>
+
+
                                 </tr>
                                 
                                 

@@ -1,9 +1,9 @@
 /********** Template CSS **********/
 :root {
-    --primary: #EB1616;
-    --secondary: #191C24;
-    --light: #6C7293;
-    --dark: #000000;
+    --primary: #f2f3fa;
+    --secondary: #232f4c;
+    --light: #dde2ff;
+    --dark: #f2f3fa;
 }
 
 .back-to-top {
@@ -131,7 +131,7 @@
 .sidebar .navbar .navbar-nav .nav-link:hover,
 .sidebar .navbar .navbar-nav .nav-link.active {
     color: var(--primary);
-    background: var(--dark);
+    background: #000;
     border-color: var(--primary);
 }
 
@@ -141,7 +141,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--dark);
+    /* background: var(--dark); */
     border-radius: 40px;
 }
 
@@ -195,7 +195,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: var(--dark);
+    background: #000;
     border-radius: 40px;
 }
 

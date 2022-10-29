@@ -68,7 +68,7 @@ if(isset($_POST['addEdu'])){
             }
         }
         else {
-            echo"<script>alert('File move Error !');</script>";
+            echo"<script>alert('File size too large minimum size 100 KB !');</script>";
         }
 }
 

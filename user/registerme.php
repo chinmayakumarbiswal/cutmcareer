@@ -139,13 +139,6 @@ else {
                                         aria-describedby="emailHelp" name="lname">
                                 </div>
 
-                                
-
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Age</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="age">
-                                </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">DOB</label>
@@ -218,6 +211,11 @@ else {
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Signature</label>
                                     <input class="form-control bg-dark" type="file" id="formFile" name="sign">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="formFile" class="form-label">Upload Resume</label>
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="cv">
                                 </div>
 
                                 
