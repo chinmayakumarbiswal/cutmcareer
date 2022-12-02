@@ -43,6 +43,9 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
+    background-image: url("../css/images/IndiaFlagwithcutmlogo.jpg");
+    background-size: cover;
+    background-attachment: fixed;
     color: #6C7293;
     background-color: #000;
     -webkit-text-size-adjust: 100%;
@@ -1996,7 +1999,7 @@ progress {
     --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
     width: 100%;
     margin-bottom: 1rem;
-    color: #6C7293;
+    color: #ffffff;
     vertical-align: top;
     border-color: #000
 }
@@ -8283,7 +8286,8 @@ fieldset:disabled .btn {
 }
 
 .text-primary {
-    color: #EB1616 !important
+    /* color: #EB1616 !important */
+    color: #ffffff !important
 }
 
 .text-secondary {

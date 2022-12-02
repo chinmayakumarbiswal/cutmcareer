@@ -9,25 +9,30 @@
 
         $profile_image_name=$_FILES['profile']['name'];
         $profile_image_tmp=$_FILES['profile']['tmp_name'];
+        $profile_image_name=date('d-m-Y-H-i').$profile_image_name;
 
-        if(move_uploaded_file($profile_image_tmp,"./profile/$profile_image_name")){
-            $query="INSERT INTO user (name,email,password,image) VALUES('$name','$email','$password','$profile_image_name')";
-            $run=mysqli_query($db,$query) or die(mysqli_error($db));
-            if ($run) {
-                echo"<script>alert('Your account created successfully !');</script>";
+
+        $query="SELECT * FROM user WHERE email='$email'";
+        $runQuery=mysqli_query($db,$query);
+        $totalRows=mysqli_num_rows($runQuery);
+        if($totalRows >=1){
+            echo"<script>alert('You have an account !');</script>";
+        }
+        else{
+            if(move_uploaded_file($profile_image_tmp,"./profile/$profile_image_name")){
+                $query="INSERT INTO user (name,email,password,image) VALUES('$name','$email','$password','$profile_image_name')";
+                $run=mysqli_query($db,$query) or die(mysqli_error($db));
+                if ($run) {
+                    echo"<script>alert('Your account created successfully !');</script>";
+                }
+                else {
+                    echo"<script>alert('Insertion Error !');</script>";
+                }
             }
             else {
-                echo"<script>alert('Insertion Error !');</script>";
+                echo"<script>alert('Insertion Error minimum size 100 KB !');</script>";
             }
         }
-        else {
-            echo"<script>alert('Insertion Error minimum size 100 KB !');</script>";
-        }
-
-        
-      
-
-
     }
 
 ?>
@@ -81,7 +86,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>CUTM Career</h3>
+                    <h3 class="text-primary"><img src="./css/images/CUTM-logo.png" height="40px" width="30px"> CUTM Career</h3>
                 </a>
                 
                 <div class="navbar-nav w-100">
@@ -104,7 +109,7 @@
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                    <h2 class="text-primary mb-0"><img src="./css/images/CUTM-logo.png" height="40px" width="30px"></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
@@ -158,7 +163,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Profile Photos</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="profile">
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="profile" accept="image/*" >
                                 </div>
                                 <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Create Account</button>
                             </div>

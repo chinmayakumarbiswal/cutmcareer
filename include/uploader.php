@@ -20,12 +20,12 @@
 
         $sign_image_name=$_FILES['sign']['name'];
         $sign_image_tmp=$_FILES['sign']['tmp_name'];
-        $signfilename=$mobile.$sign_image_name;
+        $signfilename=$mobile.date('d-m-Y-H-i').$sign_image_name;
 
 
         $cv_name=$_FILES['cv']['name'];
         $cv_tmp=$_FILES['cv']['tmp_name'];
-        $cvfilename=$mobile.$cv_name;
+        $cvfilename=$mobile.date('d-m-Y-H-i').$cv_name;
 
 
         $profile_image_name=$_POST['profile'];

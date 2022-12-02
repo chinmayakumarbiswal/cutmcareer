@@ -59,7 +59,7 @@ else {
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>CUTM Career</h3>
+                    <h3 class="text-primary"><img src="../css/images/CUTM-logo.png" height="40px" width="30px"> CUTM Career</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -87,7 +87,7 @@ else {
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                    <h2 class="text-primary mb-0"><img src="../css/images/CUTM-logo.png" height="40px" width="30px"> </h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
@@ -201,12 +201,12 @@ else {
                                 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Signature</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="sign" required>
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="sign" accept="image/*" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Resume</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="cv" required>
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="cv" accept="application/pdf" required>
                                 </div>
 
                                 
