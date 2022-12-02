@@ -10,6 +10,13 @@ else {
   header('location:../include/logout.php');
 }
 
+if(isset($_POST['findAll'])){
+    $qualification=mysqli_real_escape_string($db,$_POST['qualification']);
+    $file=getAllFileByAdminQualificationWise($db,$qualification);
+}
+else {
+    $file=getAllFileByAdmin($db); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,8 +34,9 @@ else {
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
-    
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -52,7 +60,8 @@ else {
 
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div id="spinner"
+            class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
@@ -68,8 +77,11 @@ else {
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="./img/<?=$adminData['image']?>" alt="" style="width: 40px; height: 40px;">
-                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                        <img class="rounded-circle" src="./img/<?=$adminData['image']?>" alt=""
+                            style="width: 40px; height: 40px;">
+                        <div
+                            class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+                        </div>
                     </div>
                     <div class="ms-3">
                         <h6 class="mb-0"><?=$adminData['name']?></h6>
@@ -77,15 +89,16 @@ else {
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    
-                    <a href="index.php" class="nav-item nav-link active">
+
+                    <a href="index.php" class="nav-item nav-link">
                         <i class="fa fa-tachometer-alt me-2"></i>
                         Dashboard
                     </a>
-                    <a href="qualification.php" class="nav-item nav-link">
+                    <a href="qualification.php" class="nav-item nav-link active">
                         <i class="fa fa-table"></i>
                         Qualification
                     </a>
+
                 </div>
             </nav>
         </div>
@@ -102,13 +115,14 @@ else {
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-               
+
                 <div class="navbar-nav align-items-center ms-auto">
-                    
-                    
+
+
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="./img/<?=$adminData['image']?>" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="./img/<?=$adminData['image']?>" alt=""
+                                style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex"><?=$adminData['name']?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
@@ -123,7 +137,7 @@ else {
 
 
 
-            
+
 
 
             <!-- Recent Sales Start -->
@@ -131,10 +145,27 @@ else {
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Details</h6>
-                        <button type="button" class="btn btn-outline-warning btn-icon-text btn-lg" onclick="printTable()">
+                    </div>
+                    <form action="" method="post">
+                        <div class="d-flex align-items-center justify-content-between mb-8">
+                            <label for="exampleInputEmail1" class="form-label">Highest Qualification</label>
+                            
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                                name="qualification" required>
+                                <option value="Diploma">Diploma</option>
+                                <option value="Graduation">Graduation</option>
+                                <option value="PG">PG</option>
+                                <option value="PHd">PHd</option>
+                            </select>
+                            <button type="submit" class="btn btn-outline-warning btn-icon-text btn-lg" name="findAll">
+                                Submit
+                            </button>
+                            <button type="button" class="btn btn-outline-warning btn-icon-text btn-lg" onclick="printTable()">
                                 Print
                             </button>
-                    </div>
+                        </div>
+                    </from>
+
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0" id="tableData">
                             <thead>
@@ -151,22 +182,14 @@ else {
                                     <th scope="col">Experience</th>
                                     <th scope="col">Skills</th>
                                     <th scope="col">Remarks</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Sign</th>
-                                    <th scope="col">View Resume</th>
-                                    <th scope="col">Details View</th>
                                     <th scope="col">Application Status</th>
-                                    <th scope="col">Reject</th>
-                                    <th scope="col">Approve</th>
                                 </tr>
                             </thead>
                             <tbody>
 
 
 
-                                <?php
-                                    $file=getAllFileByAdmin($db);          
+                                <?php    
                                     foreach($file as $fileGet){
                                 ?>
 
@@ -183,35 +206,11 @@ else {
                                     <td><?=$fileGet['Experience']?></td>
                                     <td><?=$fileGet['Skills']?></td>
                                     <td><?=$fileGet['Remarks']?></td>
-                                    <td><?=$fileGet['Time']?></td>
-                                    <td><img src="../profile/<?=$fileGet['photo']?>" height="50px" width="50px"></td>
-                                    <td><img src="../sign/<?=$fileGet['sign']?>" height="auto" width="50px"></td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='../cv/<?=$fileGet['cv']?>';">
-                                            <i class="mdi mdi-whatsapp"></i> Open Resume
-                                        </button> 
+                                        <div class="p-2 mb-2 bg-info text-dark"><?=$fileGet['status']?></div>
                                     </td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='./educationDetails.php?registrationId=<?=$fileGet['id']?>';">
-                                            <i class="mdi mdi-whatsapp"></i> Open File
-                                        </button> 
-                                    </td>
-                                    <td><div class="p-2 mb-2 bg-info text-dark"><?=$fileGet['status']?></div></td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-danger m-2" onclick="location.href='../include/reject.php?id=<?=$fileGet['id']?>';">
-                                            <i class="mdi mdi-whatsapp"></i> Reject
-                                        </button> 
-                                    </td>
-                                    <td>
-                                        <button type="button" class="btn btn-outline-success m-2" onclick="location.href='../include/approve.php?id=<?=$fileGet['id']?>';">
-                                            <i class="mdi mdi-whatsapp"></i> Approve
-                                        </button> 
-                                    </td>
-
-
                                 </tr>
-                                
-                                
+
                                 <?php
                                     }
                                 ?>
@@ -249,7 +248,7 @@ else {
     <script src="../lib/tempusdominus/js/moment.min.js"></script>
     <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
     <script src="../js/main.js"></script>
