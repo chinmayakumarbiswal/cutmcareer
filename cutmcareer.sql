@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2022 at 11:56 PM
+-- Generation Time: Dec 02, 2022 at 12:47 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `image`) VALUES
-(1, 'Chinmaya Kumar Biswal', 'situ@chinmayakumarbiswal.in', 'situ', 'chinmaya_white.jpg');
+(1, 'Chinmaya Kumar Biswal', 'situ@chinmayakumarbiswal.in', 'b0cdf1a710c2fbedb32adcc57aaf2b46', 'chinmaya_white.jpg');
 
 -- --------------------------------------------------------
 
@@ -67,7 +67,8 @@ CREATE TABLE `educationdetails` (
 --
 
 INSERT INTO `educationdetails` (`id`, `registrationlogId`, `education`, `Institute`, `board`, `startDate`, `endDate`, `mark`, `cgpa`, `file`) VALUES
-(1, '4', 'BSE', 'CUTM', 'CUTM', '2018-08-01', '2021-04-05', '600', '8.5', 'sem6.pdf');
+(2, '5', '10th', 'BNDBP, Jankia', 'BSE', '2015-04-08', '2016-03-08', '388', '64', 'chinmaya_10.jpg'),
+(3, '5', '12', 'UNIITECH,Nayagarh', 'HSE', '2016-06-05', '2018-04-04', '299', '49', '+2 mark.jpg');
 
 -- --------------------------------------------------------
 
@@ -93,18 +94,39 @@ CREATE TABLE `registrationlog` (
   `Remarks` varchar(255) NOT NULL,
   `Time` timestamp NOT NULL DEFAULT current_timestamp(),
   `sign` varchar(255) NOT NULL,
-  `photo` varchar(255) NOT NULL
+  `photo` varchar(255) NOT NULL,
+  `cv` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `registrationlog`
 --
 
-INSERT INTO `registrationlog` (`id`, `Title`, `firstName`, `lastName`, `age`, `dob`, `email`, `mobile`, `address`, `postApplied`, `Qualification`, `Specialization`, `Experience`, `Skills`, `Remarks`, `Time`, `sign`, `photo`) VALUES
-(1, 'Mr', 'chinmaya kumar ', 'biswal', '22', '2000-09-17', 'chinmayakumarbiswal16045@gmail.com', '6370183009', 'Hatabaradihi,Gainada,Balugaon,752027', 'teacher', 'MCA', 'Cloud', '2', 'aws', 'na', '2022-10-18 19:40:55', 'sign.jpeg', 'chinmaya_white.jpg'),
-(2, 'Mr', 'chinmaya kumar ', 'biswal', '22', '2000-09-17', 'chinmayakumarbiswal16045@gmail.com', '6370183009', 'Hatabaradihi,Gainada,Balugaon,752027', 'teacher', 'MCA', 'Cloud', '2', 'aws', '', '2022-10-18 19:43:15', 'sign.jpeg', 'chinmaya_white.jpg'),
-(3, 'Mr', 'chinmaya kumar ', 'biswal', '22', '2000-09-17', 'chinmayakumarbiswal16045@gmail.com', '6370183009', 'Hatabaradihi,Gainada,Balugaon,752027', 'teacher', 'MCA', 'Cloud', '2', 'aws', '', '2022-10-18 19:45:06', 'sign.jpeg', 'chinmaya_white.jpg'),
-(4, 'Mr', 'chinmaya kumar ', 'biswal', '22', '2000-09-17', 'chinmayakumarbiswal16045@gmail.com', '6370183009', 'Hatabaradihi,Gainada,Balugaon,752027', 'teacher', 'MCA', 'Cloud', '2', 'aws', '', '2022-10-18 19:45:38', 'sign.jpeg', 'chinmaya_white.jpg');
+INSERT INTO `registrationlog` (`id`, `Title`, `firstName`, `lastName`, `age`, `dob`, `email`, `mobile`, `address`, `postApplied`, `Qualification`, `Specialization`, `Experience`, `Skills`, `Remarks`, `Time`, `sign`, `photo`, `cv`, `status`) VALUES
+(5, 'Mr', 'Chinmaya Kumar', 'Biswal', '22', '2000-09-17', '210720100009@cutm.ac.in', '6370183009', 'Chilika', 'Teaching', 'PG', 'Cloud', '0', 'AWS', 'na', '2022-12-02 07:44:19', '6370183009sign.jpeg', 'IMG-20220504-WA0017.jpg', '6370183009Chinmaya kumar biswal CV AWS.pdf', 'Approved');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `image`) VALUES
+(1, 'Chinmaya Kumar Biswal', '210720100009@cutm.ac.in', 'b0cdf1a710c2fbedb32adcc57aaf2b46', 'IMG-20220504-WA0017.jpg'),
+(2, 'Chinmaya Kumar Biswal', 'admin@situchinmaya.in', 'b0cdf1a710c2fbedb32adcc57aaf2b46', 'DSC_1536.JPG');
 
 --
 -- Indexes for dumped tables
@@ -129,6 +151,12 @@ ALTER TABLE `registrationlog`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -142,13 +170,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `educationdetails`
 --
 ALTER TABLE `educationdetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `registrationlog`
 --
 ALTER TABLE `registrationlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
