@@ -4,6 +4,7 @@
     if(isset($_POST['LoginInto'])){
         $email=mysqli_real_escape_string($db,$_POST['email']);
         $password=mysqli_real_escape_string($db,$_POST['password']);
+        $password=md5($password);
 
         // echo $email;
         // echo $password;

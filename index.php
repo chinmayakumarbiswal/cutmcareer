@@ -5,6 +5,7 @@
         $name=mysqli_real_escape_string($db,$_POST['name']);
         $email=mysqli_real_escape_string($db,$_POST['email']);
         $password=mysqli_real_escape_string($db,$_POST['password']);
+        $password=md5($password);
 
         $profile_image_name=$_FILES['profile']['name'];
         $profile_image_tmp=$_FILES['profile']['tmp_name'];
