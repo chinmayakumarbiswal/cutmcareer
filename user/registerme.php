@@ -121,7 +121,7 @@ else {
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Title</label>
-                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="title">
+                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="title" required>
                                         <option value="Mr">Mr .</option>
                                         <option value="Mrs">Mrs .</option>
                                     </select>
@@ -129,44 +129,39 @@ else {
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="fname">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="fname" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="lname">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="lname" required>
                                 </div>
 
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">DOB</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="dob">
+                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="dob" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="email" value="<?=$userData['email']?>" readonly>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?=$userData['email']?>" readonly>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Mobile</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="mobile">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="mobile" required>
                                 </div>
 
                                 <div class="form-floating">
                                 <label for="exampleInputEmail1" class="form-label">Address</label>
                                     <textarea class="form-control" placeholder="Address"
-                                        id="floatingTextarea" style="height: 150px;" name="address"></textarea>
+                                        id="floatingTextarea" style="height: 150px;" name="address" required></textarea>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Post Applied</label>
-                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="post">
+                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="post" required>
                                         <option value="Teaching">Teaching</option>
                                         <option value="Non Teaching">Non Teaching</option>
                                     </select>
@@ -175,7 +170,7 @@ else {
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Highest Qualification</label>
                                     
-                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="qualification">
+                                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="qualification" required>
                                         <option value="Diploma">Diploma</option>
                                         <option value="Graduation">Graduation</option>
                                         <option value="PG">PG</option>
@@ -186,36 +181,32 @@ else {
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Specialization</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="specialization">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="specialization" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Experience</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="experiance">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="experiance" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Skills</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="skill">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="skill" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Remarks</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" name="remark">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="remark" required>
                                 </div>
                                 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Signature</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="sign">
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="sign" required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Resume</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="cv">
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="cv" required>
                                 </div>
 
                                 

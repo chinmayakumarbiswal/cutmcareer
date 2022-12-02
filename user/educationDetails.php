@@ -25,8 +25,11 @@ if($_GET['registrationId'])
 else {
   header('location:./index.php');
 }
-
-
+    // changing the upload limits
+    ini_set('upload_max_filesize', '50M');
+    ini_set('post_max_size', '50M');
+    ini_set('max_input_time', 300);
+    ini_set('max_execution_time', 300);
 
 if(isset($_POST['addEdu'])){
     $education=mysqli_real_escape_string($db,$_POST['education']);
@@ -120,12 +123,7 @@ if(isset($_POST['addEdu'])){
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                
                 <form action="" method="post" enctype="multipart/form-data">
                     <div class="modal-body">
 
@@ -138,50 +136,43 @@ if(isset($_POST['addEdu'])){
 
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="" name="education">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="" name="education" required>
                                     <label for="floatingInput">Education</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="" name="institute">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="" name="institute" required>
                                     <label for="floatingInput">Institute</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="" name="board">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="" name="board" required>
                                     <label for="floatingInput">Board</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="date" class="form-control" id="floatingInput"
-                                        placeholder="" name="startdate">
+                                    <input type="date" class="form-control" id="floatingInput" placeholder="" name="startdate" required>
                                     <label for="floatingInput">StartDate</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="date" class="form-control" id="floatingInput"
-                                        placeholder="" name="enddate">
+                                    <input type="date" class="form-control" id="floatingInput" placeholder="" name="enddate" required>
                                     <label for="floatingInput">EndDate</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="" name="mark">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="" name="mark" required>
                                     <label for="floatingInput">Mark</label>
                                 </div>
 
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput"
-                                        placeholder="" name="cgpa">
+                                    <input type="text" class="form-control" id="floatingInput" placeholder="" name="cgpa" required>
                                     <label for="floatingInput">CGPA / Percentage </label>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Certificate</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="certfile">
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="certfile" required>
                                 </div>
                                 
                                 
