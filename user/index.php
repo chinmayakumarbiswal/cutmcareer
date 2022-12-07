@@ -91,7 +91,7 @@ else {
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><img src="../css/images/CUTM-logo.png" height="40px" width="30px"></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">

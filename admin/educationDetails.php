@@ -73,7 +73,7 @@ else {
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-secondary navbar-dark">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><img src="../css/images/CUTM-logo.png" height="40px" width="30px"> CUTM Career</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
@@ -87,9 +87,9 @@ else {
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     
-                    <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> -->
+                    <!-- <a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> -->
                     
                 </div>
             </nav>
@@ -101,7 +101,7 @@ else {
         <div class="content">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                <a href="index.php" class="navbar-brand d-flex d-lg-none me-4">
                     <h2 class="text-primary mb-0"><img src="../css/images/CUTM-logo.png" height="40px" width="30px"></h2>
                 </a>
                 <a href="#" class="sidebar-toggler flex-shrink-0">
