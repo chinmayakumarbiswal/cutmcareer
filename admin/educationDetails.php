@@ -33,7 +33,7 @@ else {
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" type="image/png" href="../favicon.png" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -181,7 +181,7 @@ else {
                                             <td><?=$fileGet['mark']?></td>
                                             <td><?=$fileGet['cgpa']?></td>
                                             <td>
-                                                <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='../allfiles/<?=$fileGet['file']?>';">
+                                                <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="window.open('../allfiles/<?=$fileGet['file']?>', '_blank');">
                                                     <i class="mdi mdi-whatsapp"></i> Open File
                                                 </button>   
                                             </td>

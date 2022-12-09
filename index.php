@@ -49,7 +49,13 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link rel="icon" type="image/png" href="favicon.png" />
+
+    <meta property="og:site_name" content="CUTM Career">
+    <meta property="og:title" content="CUTM Career" />
+    <meta property="og:description" content="Centurion University Of Technology and Management" />
+    <meta property="og:image" itemprop="image" content="favicon.png">
+    <meta property="og:type" content="website" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
