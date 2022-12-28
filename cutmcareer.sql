@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2022 at 12:47 PM
+-- Generation Time: Dec 28, 2022 at 08:04 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `image`) VALUES
-(1, 'Chinmaya Kumar Biswal', 'situ@chinmayakumarbiswal.in', 'b0cdf1a710c2fbedb32adcc57aaf2b46', 'chinmaya_white.jpg');
+(1, 'Prakash', 'prakash.kvd@cutm.ac.in', '2abd5f81ca976104ccf7b9706e6e34ae', 'admin.jpg');
 
 -- --------------------------------------------------------
 
@@ -67,8 +67,9 @@ CREATE TABLE `educationdetails` (
 --
 
 INSERT INTO `educationdetails` (`id`, `registrationlogId`, `education`, `Institute`, `board`, `startDate`, `endDate`, `mark`, `cgpa`, `file`) VALUES
-(2, '5', '10th', 'BNDBP, Jankia', 'BSE', '2015-04-08', '2016-03-08', '388', '64', 'chinmaya_10.jpg'),
-(3, '5', '12', 'UNIITECH,Nayagarh', 'HSE', '2016-06-05', '2018-04-04', '299', '49', '+2 mark.jpg');
+(8, '8', '10', 'BNDBP,Jankia', 'HSE', '2015-04-16', '2016-03-09', '388', '64', '09-12-2022-10-26chinmaya_10.jpg'),
+(9, '8', '12', 'UNIITECH', 'HSE', '2016-05-01', '2018-03-04', '299', '49', '09-12-2022-10-28+2.jpg'),
+(10, '8', 'Graduation ', 'Centurion University', 'Centurion University', '2018-08-12', '2021-04-04', '8.5', '8.5', '09-12-2022-10-29ctis.jpg');
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ CREATE TABLE `registrationlog` (
 --
 
 INSERT INTO `registrationlog` (`id`, `Title`, `firstName`, `lastName`, `age`, `dob`, `email`, `mobile`, `address`, `postApplied`, `Qualification`, `Specialization`, `Experience`, `Skills`, `Remarks`, `Time`, `sign`, `photo`, `cv`, `status`) VALUES
-(5, 'Mr', 'Chinmaya Kumar', 'Biswal', '22', '2000-09-17', '210720100009@cutm.ac.in', '6370183009', 'Chilika', 'Teaching', 'PG', 'Cloud', '0', 'AWS', 'na', '2022-12-02 07:44:19', '6370183009sign.jpeg', 'IMG-20220504-WA0017.jpg', '6370183009Chinmaya kumar biswal CV AWS.pdf', 'Approved');
+(8, 'Mr', 'Chinmaya Kumar', 'Biswal', '22', '2000-09-17', '210720100009@cutm.ac.in', '6370183009', 'Hatabaradihi,Gainada,Balugaon,752027', 'Teaching', 'PG', 'Cloud', '0', 'AWS, GCP', ' ', '2022-12-09 09:22:55', '637018300909-12-2022-10-22sign.jpeg', '09-12-2022-10-20chinmaya.jpg', '637018300909-12-2022-10-22chinmayakumarbiswal_devops.pdf', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -125,8 +126,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `image`) VALUES
-(1, 'Chinmaya Kumar Biswal', '210720100009@cutm.ac.in', 'b0cdf1a710c2fbedb32adcc57aaf2b46', 'IMG-20220504-WA0017.jpg'),
-(2, 'Chinmaya Kumar Biswal', 'admin@situchinmaya.in', 'b0cdf1a710c2fbedb32adcc57aaf2b46', 'DSC_1536.JPG');
+(5, 'Chinmaya Kumar Biswal', '210720100009@cutm.ac.in', 'b0cdf1a710c2fbedb32adcc57aaf2b46', '09-12-2022-10-20chinmaya.jpg');
 
 --
 -- Indexes for dumped tables
@@ -170,19 +170,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `educationdetails`
 --
 ALTER TABLE `educationdetails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `registrationlog`
 --
 ALTER TABLE `registrationlog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
