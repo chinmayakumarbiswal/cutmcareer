@@ -78,6 +78,8 @@ else {
                     <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     
                     <a href="./registerme.php" class="nav-item nav-link active"><i class="fa fa-th me-2"></i>Register</a>
+
+                    <a href="./changePassword.php" class="nav-item nav-link"><i class="fa fa-lock"></i>Change Password</a>
                     
                 </div>
             </nav>
