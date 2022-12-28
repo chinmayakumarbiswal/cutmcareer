@@ -92,7 +92,7 @@
 
 
         <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
+        <div class="sidebar pe-4 pb-3 open">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><img src="./css/images/CUTM-logo.png" height="40px" width="30px"> CUTM Career</h3>
@@ -113,7 +113,7 @@
 
 
         <!-- Content Start -->
-        <div class="content">
+        <div class="content open">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 
