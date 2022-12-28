@@ -45,6 +45,9 @@ else {
 </head>
 
 <body>
+    <div class="particleImg"></div>
+    <div class="particleclass" id="particles-js"></div>
+
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -255,6 +258,10 @@ else {
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+
+    <script src="../particles/particles.js"></script>
+    <script src="../particles/app.js"></script>
+    
 </body>
 
 </html>

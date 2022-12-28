@@ -112,7 +112,8 @@ if(isset($_POST['addEdu'])){
 </head>
 
 <body>
-
+    <div class="particleImg"></div>
+    <div class="particleclass" id="particles-js"></div>
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -373,6 +374,9 @@ if(isset($_POST['addEdu'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    
+    <script src="../particles/particles.js"></script>
+    <script src="../particles/app.js"></script>
 
 
     <!-- Template Javascript -->

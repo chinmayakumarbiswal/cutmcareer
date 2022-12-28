@@ -61,6 +61,9 @@
 </head>
 
 <body>
+    <div class="particleImg"></div>
+    <div class="particleclass" id="particles-js"></div>
+
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -72,7 +75,7 @@
 
 
         <!-- Sidebar Start -->
-        <div class="sidebar pe-4 pb-3">
+        <div class="sidebar pe-4 pb-3 open">
             <nav class="navbar bg-secondary navbar-dark">
                 <a href="index.php" class="navbar-brand mx-4 mb-3">
                     <h3 class="text-primary"><img src="./css/images/CUTM-logo.png" height="40px" width="30px"> CUTM Career</h3>
@@ -93,7 +96,7 @@
 
 
         <!-- Content Start -->
-        <div class="content">
+        <div class="content open">
             <!-- Navbar Start -->
             <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
                 
@@ -188,6 +191,9 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="./particles/particles.js"></script>
+    <script src="./particles/app.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>

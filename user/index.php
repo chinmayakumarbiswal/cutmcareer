@@ -45,10 +45,8 @@ else {
 </head>
 
 <body>
-
-
-
-
+    <div class="particleImg"></div>
+    <div class="particleclass" id="particles-js"></div>
 
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
@@ -232,6 +230,10 @@ else {
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+
+    <script src="../particles/particles.js"></script>
+    <script src="../particles/app.js"></script>
+    
 </body>
 
 </html>

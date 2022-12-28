@@ -57,7 +57,8 @@ else {
 </head>
 
 <body>
-
+    <div class="particleImg"></div>
+    <div class="particleclass" id="particles-js"></div>
 
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
@@ -238,6 +239,9 @@ else {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+
+    <script src="../particles/particles.js"></script>
+    <script src="../particles/app.js"></script>
 
 
     <!-- Template Javascript -->

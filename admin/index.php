@@ -45,10 +45,8 @@ else {
 </head>
 
 <body>
-
-
-
-
+    <div class="particleImg"></div>
+    <div class="particleclass" id="particles-js"></div>
 
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
@@ -249,6 +247,9 @@ else {
     <script src="../lib/tempusdominus/js/moment.min.js"></script>
     <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="../particles/particles.js"></script>
+    <script src="../particles/app.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" integrity="sha512-r22gChDnGvBylk90+2e/ycr3RVrDi8DIOkIGNhJlKfuyQM4tIRAI062MaV8sfjQKYVGjOBaZBOA87z+IhZE9DA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     
