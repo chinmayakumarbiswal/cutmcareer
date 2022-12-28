@@ -22,6 +22,11 @@ function getAllFile($db,$registrationId){
     return $data;
 }
 
+function randPass() {
+    $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    return substr(str_shuffle($chars),0,8);
+}
+
     function getAllFileByAdmin($db){
         $query="SELECT * FROM registrationlog ORDER BY id DESC";
         $run=mysqli_query($db,$query);

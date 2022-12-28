@@ -1,22 +1,35 @@
 <?php
+    require('./mailer.php');
     require('./include/database.php');
     require('./include/function.php');
     if(isset($_POST['LoginInto'])){
         $email=mysqli_real_escape_string($db,$_POST['email']);
-        $password=mysqli_real_escape_string($db,$_POST['password']);
-        $password=md5($password);
 
-        // echo $email;
-        // echo $password;
-
-        $query="SELECT * FROM user WHERE email='$email' AND password='$password'";
+        $query="SELECT * FROM user WHERE email='$email'";
         $runQuery=mysqli_query($db,$query);
-        if(mysqli_num_rows($runQuery)){
-            $_SESSION['email']=$email;
-            header('location:./user/index.php');
+        $totalRows=mysqli_num_rows($runQuery);
+        if($totalRows >= 1){
+            $password=randPass();
+            $msg="Hello ".$email." use this as your password : ".$password;
+            $password=md5($password);
+            $isMailSend=smtp_mailer($email,'Forgot password',$msg);
+
+            if ($isMailSend == "Sent") {
+                echo"<script>alert('You new password send to your email !');</script>";
+                $query="UPDATE user SET password='$password' WHERE email='$email'";
+                $run=mysqli_query($db,$query) or die(mysqli_error($db));
+                if ($run) {
+                    header('location:./userlogin.php');
+                }
+                else {
+                    echo"<script>alert('Password update error try to login using old password!');</script>";
+                }
+            }else {
+                echo"<script>alert('We are sorry somthing wrong in my mailer!');</script>";
+            }
         }
         else{
-            echo"<script>alert('Incorrect email and password !');</script>";
+            echo"<script>alert('You donot have an account please create before login !');</script>";
         }
     }
 
@@ -35,6 +48,12 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png" />
+
+    <meta property="og:site_name" content="CUTM Career">
+    <meta property="og:title" content="CUTM Career" />
+    <meta property="og:description" content="Centurion University Of Technology and Management" />
+    <meta property="og:image" itemprop="image" content="favicon.png">
+    <meta property="og:type" content="website" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +78,7 @@
 <body>
     <div class="particleImg"></div>
     <div class="particleclass" id="particles-js"></div>
-
+    
     <div class="container-fluid position-relative d-flex p-0">
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -79,9 +98,9 @@
                 
                 <div class="navbar-nav w-100">
                     
-                    <a href="./index.php" class="nav-item nav-link"><i class="fa fa-id-card me-2"></i>Register</a>
+                    <a href="./index.php" class="nav-item nav-link active"><i class="fa fa-id-card me-2"></i>Register</a>
                     <a href="./adminlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>Admin Login</a>
-                    <a href="./userlogin.php" class="nav-item nav-link active"><i class="fa fa-lock me-2"></i>User Login</a>
+                    <a href="./userlogin.php" class="nav-item nav-link"><i class="fa fa-lock me-2"></i>User Login</a>
                    
                 </div>
 
@@ -112,7 +131,7 @@
                     </div>
 
                     <div class="nav-item dropdown">
-                        <a href="./userlogin.php" class="nav-link active">
+                        <a href="./userlogin.php" class="nav-link">
                             <i class="fa fa-lock me-lg-2"></i>
                             <span class="d-none d-lg-inline-flex">User Login</span>
                         </a>
@@ -130,26 +149,18 @@
             <div class="container-fluid">
                 <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                     <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
-                        <form action="" method="post">
+                        <form action="" method="post" enctype="multipart/form-data">
                             <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <a href="index.php" class="">
-                                        <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>CUTM Career</h3>
+                                        <h3 class="text-primary">Forgot Password</h3>
                                     </a>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                                    <input type="email" class="form-control" id="floatingInputemail"  name="email" required>
                                     <label for="floatingInput">User Email address</label>
                                 </div>
-                                <div class="form-floating mb-4">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
-                                    <label for="floatingPassword">Password</label>
-                                </div>
-                                
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <a href="./forgotPassword.php">Forgot Password</a>
-                                </div>
-                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Sign In</button>
+                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Create Account</button>
                             </div>
                         </form>
                     </div>
@@ -187,12 +198,15 @@
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
+    
     <script src="./particles/particles.js"></script>
     <script src="./particles/app.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        
+    </script>
 </body>
 
 </html>
