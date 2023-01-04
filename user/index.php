@@ -149,6 +149,7 @@ else {
                                     <th scope="col">View Resume</th>
                                     <th scope="col">Add Education</th>
                                     <th scope="col">Application Status</th>
+                                    <th scope="col">Edit Application</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -186,10 +187,12 @@ else {
                                             <i class="mdi mdi-whatsapp"></i> Add Education
                                         </button> 
                                     </td>
-
                                     <td><div class="p-2 mb-2 bg-info text-dark"><?=$fileGet['status']?></div></td>
-
-
+                                    <td>
+                                        <button type="button" class="btn btn-outline-warning btn-icon-text" onclick="location.href='./registermeEdit.php?registrationId=<?=$fileGet['id']?>';">
+                                             Edit
+                                        </button> 
+                                    </td>
                                 </tr>
                                 
                                 

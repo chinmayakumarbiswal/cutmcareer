@@ -64,5 +64,11 @@ function randPass() {
         return $data;
     }
 
+    function getAllRegisterData($db,$email){
+        $query="SELECT * FROM registrationlog WHERE email='$email' ";
+        $run=mysqli_query($db,$query);
+        $data=mysqli_fetch_assoc($run);
+        return $data;
+    }
     
 ?>
