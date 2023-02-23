@@ -3,7 +3,7 @@ include('smtp/PHPMailerAutoload.php');
 
 function smtp_mailer($to,$subject, $msg){
 	$mail = new PHPMailer(); 
-	$mail->SMTPDebug  = 3;
+	$mail->SMTPDebug  = 0;
 	$mail->IsSMTP(); 
 	$mail->SMTPAuth = true; 
 	$mail->SMTPSecure = 'tls'; 
@@ -12,7 +12,7 @@ function smtp_mailer($to,$subject, $msg){
 	$mail->IsHTML(true);
 	$mail->CharSet = 'UTF-8';
 	$mail->Username = "your email";
-	$mail->Password = "yuor password";
+	$mail->Password = "your password";
 	$mail->SetFrom("your email");
 	$mail->Subject = $subject;
 	$mail->Body =$msg;

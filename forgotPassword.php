@@ -5,7 +5,7 @@
     if(isset($_POST['LoginInto'])){
         $email=mysqli_real_escape_string($db,$_POST['email']);
 
-        $query="SELECT * FROM user WHERE email='$email'";
+        $query="SELECT * FROM user WHERE email='$email' AND status='verify'";
         $runQuery=mysqli_query($db,$query);
         $totalRows=mysqli_num_rows($runQuery);
         if($totalRows >= 1){
@@ -19,7 +19,7 @@
                 $query="UPDATE user SET password='$password' WHERE email='$email'";
                 $run=mysqli_query($db,$query) or die(mysqli_error($db));
                 if ($run) {
-                    header('location:./userlogin.php');
+                    echo"<script>alert('Check Your Email ');window.location.href = './userlogin.php';</script>";
                 }
                 else {
                     echo"<script>alert('Password update error try to login using old password!');</script>";
@@ -29,7 +29,7 @@
             }
         }
         else{
-            echo"<script>alert('You donot have an account please create before login !');</script>";
+            echo"<script>alert('You donot have an account please create before login or your verification is pending please verify using email!');window.location.href = './verification.php?vemail=".$email."';</script>";
         }
     }
 
@@ -160,7 +160,7 @@
                                     <input type="email" class="form-control" id="floatingInputemail"  name="email" required>
                                     <label for="floatingInput">User Email address</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Create Account</button>
+                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Forgot Password</button>
                             </div>
                         </form>
                     </div>

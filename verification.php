@@ -1,51 +1,50 @@
 <?php
+    require('./mailer.php');
     require('./include/database.php');
     require('./include/function.php');
-    require('./mailer.php');
-    if(isset($_POST['LoginInto'])){
-        $name=mysqli_real_escape_string($db,$_POST['name']);
-        $email=mysqli_real_escape_string($db,$_POST['email']);
-        $password=mysqli_real_escape_string($db,$_POST['password']);
-        $password=md5($password);
+    if (isset($_GET['vemail'])) {
+        $uemail=$_GET['vemail'];
+        $userDetails=getUserDetails($db,$uemail);
+        if (!$userDetails) {
+            echo"<script>alert('Email Not Found !');window.location.href = './index.php';</script>";
+        }else {
+            
+        }
+    }else {
+        echo"<script>window.location.href = './index.php';</script>";
+    }
 
-        $profile_image_name=$_FILES['profile']['name'];
-        $profile_image_type=$_FILES['profile']['type'];
-        $profile_image_tmp=$_FILES['profile']['tmp_name'];
-        $profile_image_name=date('d-m-Y-H-i').$profile_image_name;
 
-        if ($profile_image_type=="image/jpeg" || $profile_image_type=="image/jpg" || $profile_image_type=="image/png") {
-            $query="SELECT * FROM user WHERE email='$email'";
-            $runQuery=mysqli_query($db,$query);
-            $totalRows=mysqli_num_rows($runQuery);
-            if($totalRows >=1){
-                echo"<script>alert('You have an account !');window.location.href = './userlogin.php';</script>";
-            }
-            else{
-                if(move_uploaded_file($profile_image_tmp,"./profile/$profile_image_name")){
-                    $verifyKey=randPassNo();
-                    $msg="Use ".$verifyKey." as your verification code";
-                    $isMailSend=smtp_mailer($email,'Verify Career Cutm',$msg);
-                    if ($isMailSend == "Sent") {
-                        $query="INSERT INTO user (name,email,password,image,status,verifyCode) VALUES('$name','$email','$password','$profile_image_name','pending','$verifyKey')";
-                        $run=mysqli_query($db,$query) or die(mysqli_error($db));
-                        if ($run) {
-                            echo"<script>alert('Your account created successfully please verify your email!');window.location.href = './verification.php?vemail=".$email."';</script>";
-                        }
-                        else {
-                            echo"<script>alert('Insertion Error please ignore verify email!');</script>";
-                        }
-                    }else {
-                        echo"<script>alert('We are sorry somthing wrong in my mailer!');</script>";
-                    }
-                }
-                else {
-                    echo"<script>alert('Insertion Error minimum size 100 KB !');</script>";
-                }
+    if(isset($_POST['verifyKey'])){
+        $keyIs=mysqli_real_escape_string($db,$_POST['key']);
+        if ($userDetails['verifyCode'] == $keyIs) {
+            $query="UPDATE user SET status='verify' WHERE email='$uemail'";
+            $run=mysqli_query($db,$query) or die(mysqli_error($db));
+            if ($run) {
+                echo"<script>alert('Email verified');window.location.href = './userlogin.php';</script>";
+            }else {
+                echo"<script>alert('Email verified but backend error please contact to admin');window.location.href = './userlogin.php';</script>";
             }
         }else {
-            echo"<script>alert('Please Upload your sign as JPEG,JPG or PNG file Only');</script>";
+            echo"<script>alert('Enter a Valid No !');</script>";
+        }  
+    }
+
+    if(isset($_POST['reSend'])){
+        $verifyKey=randPassNo();
+        $msg="Use ".$verifyKey." as your verification code";
+        $isMailSend=smtp_mailer($uemail,'Verify Career Cutm',$msg);
+        if ($isMailSend == "Sent") {
+            $query="UPDATE user SET verifyCode='$verifyKey' WHERE email='$uemail'";
+            $run=mysqli_query($db,$query) or die(mysqli_error($db));
+            if ($run) {
+                echo"<script>alert('Please check your email');</script>";
+            }else {
+                echo"<script>alert('Unable to update security key please update after some time');</script>";
+            }
+        }else {
+            echo"<script>alert('We are sorry somthing wrong in my mailer!');</script>";
         }
-        
     }
 
 ?>
@@ -168,26 +167,15 @@
                             <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                                 <div class="d-flex align-items-center justify-content-between mb-3">
                                     <a href="index.php" class="">
-                                        <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>CUTM Career</h3>
+                                        <h3 class="text-primary">Verify Email</h3>
                                     </a>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInput" placeholder="Full Name" name="name" required>
-                                    <label for="floatingInput">Full Name</label>
+                                    <input type="number" class="form-control" placeholder="User Verify Key" id="floatingInputemail"  name="key">
+                                    <label for="floatingInput">User Verify Key </label>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="floatingInputemail" placeholder="Email" name="email" required>
-                                    <label for="floatingInput">User Email address</label>
-                                </div>
-                                <div class="form-floating mb-4">
-                                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
-                                    <label for="floatingPassword">Password</label>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="formFile" class="form-label">Upload Profile Photos</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="profile" accept="image/*" >
-                                </div>
-                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="LoginInto">Create Account</button>
+                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="verifyKey">Verify</button>
+                                <button type="submit" class="btn btn-primary py-3 w-100 mb-4" name="reSend">Resend Verification Code </button>
                             </div>
                         </form>
                     </div>
@@ -231,6 +219,9 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script>
+        
+    </script>
 </body>
 
 </html>

@@ -9,14 +9,14 @@
         // echo $email;
         // echo $password;
 
-        $query="SELECT * FROM user WHERE email='$email' AND password='$password'";
+        $query="SELECT * FROM user WHERE email='$email' AND password='$password' AND status='verify'";
         $runQuery=mysqli_query($db,$query);
         if(mysqli_num_rows($runQuery)){
             $_SESSION['email']=$email;
             header('location:./user/index.php');
         }
         else{
-            echo"<script>alert('Incorrect email and password !');</script>";
+            echo"<script>alert('Incorrect email and password or you have not veryfy your account!');window.location.href = './verification.php?vemail=".$email."';</script>";
         }
     }
 

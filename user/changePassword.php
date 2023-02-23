@@ -188,7 +188,7 @@ if(isset($_POST['ChangePassword'])){
                                     <label for="floatingPassword">Confirm Password</label>
                                 </div>
                                 <button type="submit" class="btn btn-primary py-3 w-100 mb-4"
-                                    name="ChangePassword">Create Account</button>
+                                    name="ChangePassword">Change Password</button>
                             </div>
                         </form>
                     </div>
