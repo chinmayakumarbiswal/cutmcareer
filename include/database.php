@@ -1,4 +1,4 @@
 <?php
     session_start();
-    $db =mysqli_connect('localhost','root','','cutmcareer');
+    $db =mysqli_connect('localhost','root','','cutmcareernew');
 ?>

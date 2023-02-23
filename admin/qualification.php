@@ -11,8 +11,20 @@ else {
 }
 
 if(isset($_POST['findAll'])){
-    $qualification=mysqli_real_escape_string($db,$_POST['qualification']);
-    $file=getAllFileByAdminQualificationWise($db,$qualification);
+    if ($_POST['qualification'] && $_POST['Specialization']) {
+        $qualification=mysqli_real_escape_string($db,$_POST['qualification']);
+        $specialization=mysqli_real_escape_string($db,$_POST['Specialization']);
+        $file=getAllFileByAdminQualificationandSpecializationWise($db,$qualification,$specialization);
+    }elseif ($_POST['qualification']) {
+        $qualification=mysqli_real_escape_string($db,$_POST['qualification']);
+        $file=getAllFileByAdminQualificationWise($db,$qualification);
+    }elseif ($_POST['Specialization']) {
+        $specialization=mysqli_real_escape_string($db,$_POST['Specialization']);
+        $file=getAllFileByAdminSpecializationWise($db,$specialization);
+        
+    }else {
+        $file=getAllFileByAdmin($db); 
+    }
 }
 else {
     $file=getAllFileByAdmin($db); 
@@ -149,11 +161,27 @@ else {
                             <label for="exampleInputEmail1" class="form-label">Highest Qualification</label>
                             
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
-                                name="qualification" required>
+                                name="qualification">
+                                <option value="">Select</option>
                                 <option value="Diploma">Diploma</option>
                                 <option value="Graduation">Graduation</option>
                                 <option value="PG">PG</option>
-                                <option value="PHd">PHd</option>
+                                <option value="Ph.D">Ph.D</option>
+                            </select>
+
+                            <label for="exampleInputEmail1" class="form-label">Specialization</label>
+                            
+                            <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                                name="Specialization">
+                                <option value="">Select</option>
+                                <?php    
+                                    $getSpecialization=getAllSpecialization($db); 
+                                    foreach($getSpecialization as $getSpecializations){
+                                ?>
+                                <option value="<?=$getSpecializations['Specialization']?>"><?=$getSpecializations['Specialization']?></option>
+                                <?php
+                                    }
+                                ?>
                             </select>
                             <button type="submit" class="btn btn-outline-warning btn-icon-text btn-lg" name="findAll">
                                 Submit

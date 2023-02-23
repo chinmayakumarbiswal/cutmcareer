@@ -141,7 +141,7 @@ if(isset($_GET['registrationId']))
                             <h6 class="mb-4">Registration</h6>
                             <form action="../include/uploader.php" method="post" enctype="multipart/form-data">
 
-
+                                <input type="hidden" value="<?=$registrationId?>" name="registrationId">
 
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Title</label>
@@ -201,7 +201,7 @@ if(isset($_GET['registrationId']))
                                         <option value="Diploma">Diploma</option>
                                         <option value="Graduation">Graduation</option>
                                         <option value="PG">PG</option>
-                                        <option value="PHd">PHd</option>
+                                        <option value="Ph.D">Ph.D</option>
                                     </select>
                                 </div>
 

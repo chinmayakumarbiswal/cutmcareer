@@ -38,6 +38,7 @@ if(isset($_POST['addEdu'])){
 
 
     $certfile_name=$_FILES['certfile']['name'];
+    $certfile_type=$_FILES['certfile']['type'];
     $certfile_tmp=$_FILES['certfile']['tmp_name'];
     $certfile_name=date('d-m-Y-H-i').$certfile_name;
 
@@ -55,7 +56,7 @@ if(isset($_POST['addEdu'])){
 
     // echo $certfile_name."<br>";
     // echo $certfile_tmp."<br>";
-
+    if ($certfile_type=="application/pdf") {
         if(move_uploaded_file($certfile_tmp,"../allfiles/$certfile_name")){
             $query="INSERT INTO educationdetails (registrationlogId,education,Institute,board,startDate,endDate,mark,cgpa,file) VALUES('$registrationId','$education','$institute','$board','$startdate','$enddate','$mark','$cgpa','$certfile_name')";
             $run=mysqli_query($db,$query) or die(mysqli_error($db));
@@ -69,6 +70,10 @@ if(isset($_POST['addEdu'])){
         else {
             echo"<script>alert('File size too large minimum size 100 KB !');</script>";
         }
+    }else {
+        echo"<script>alert('Please Upload your certificate as PDF file Only');</script>";
+    }
+        
 }
 
 
@@ -169,7 +174,7 @@ if(isset($_POST['addEdu'])){
 
                                 <div class="mb-3">
                                     <label for="formFile" class="form-label">Upload Certificate</label>
-                                    <input class="form-control bg-dark" type="file" id="formFile" name="certfile" required>
+                                    <input class="form-control bg-dark" type="file" id="formFile" name="certfile" accept="application/pdf" required>
                                 </div>
                                 
                                 

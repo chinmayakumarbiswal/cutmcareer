@@ -70,5 +70,35 @@ function randPass() {
         $data=mysqli_fetch_assoc($run);
         return $data;
     }
+
+    function getAllSpecialization($db){
+        $query="SELECT * FROM registrationlog GROUP BY Specialization";
+        $run=mysqli_query($db,$query);
+        $data=array();
+        while($d=mysqli_fetch_assoc($run)){
+            $data[]=$d;
+        }
+        return $data;
+    }
+
+    function getAllFileByAdminSpecializationWise($db,$specialization){
+        $query="SELECT * FROM registrationlog WHERE Specialization='$specialization' ORDER BY id DESC";
+        $run=mysqli_query($db,$query);
+        $data=array();
+        while($d=mysqli_fetch_assoc($run)){
+            $data[]=$d;
+        }
+        return $data;
+    }
+
+    function getAllFileByAdminQualificationandSpecializationWise($db,$qualification,$specialization){
+        $query="SELECT * FROM registrationlog WHERE Qualification='$qualification' AND Specialization='$specialization' ORDER BY id DESC";
+        $run=mysqli_query($db,$query);
+        $data=array();
+        while($d=mysqli_fetch_assoc($run)){
+            $data[]=$d;
+        }
+        return $data;
+    }
     
 ?>

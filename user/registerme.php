@@ -179,7 +179,7 @@ else {
                                         <option value="Diploma">Diploma</option>
                                         <option value="Graduation">Graduation</option>
                                         <option value="PG">PG</option>
-                                        <option value="PHd">PHd</option>
+                                        <option value="Ph.D">Ph.D</option>
                                     </select>
                                 </div>
 
